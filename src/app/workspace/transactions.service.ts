@@ -94,6 +94,7 @@ export class TransactionsService {
     // @ts-ignore
     if(!isNaN(since) && curr < since)
       return false;
+    // @ts-ignore
     if(!isNaN(to) && curr > to)
       return false;
     return true;

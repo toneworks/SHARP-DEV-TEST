@@ -9,5 +9,5 @@ import {AuthenticationService} from './authentication.service';
 export class AppComponent {
   title = 'SHARP-DEV-TEST';
 
-  constructor(private auth: AuthenticationService){}
+  constructor(public auth: AuthenticationService){}
 }

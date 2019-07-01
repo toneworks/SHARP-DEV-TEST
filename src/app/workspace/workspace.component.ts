@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class WorkspaceComponent implements OnInit {
 
-  constructor(public auth: AuthenticationService, public userInfo: UserInfoService, private router: Router) { }
+  constructor(public auth: AuthenticationService, public userInfo: UserInfoService, public router: Router) { }
 
   ngOnInit() {
     if(!this.auth.token)

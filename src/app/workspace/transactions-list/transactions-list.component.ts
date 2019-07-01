@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {TransactionsService} from '../transactions.service';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @Component({
   selector: 'app-transactions-list',
@@ -26,7 +25,7 @@ export class TransactionsListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  constructor(private trans: TransactionsService) {
+  constructor(public trans: TransactionsService) {
     if(this.trans.loaded)
       this.setDataSource();
     this.trans.justLoaded.subscribe(() => {

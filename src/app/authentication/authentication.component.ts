@@ -13,8 +13,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.router.url !== '/authentication/login' || this.router.url !== '/authentication/registration')
-      this.router.navigateByUrl('/authentication/login');
+     this.router.navigateByUrl('/authentication/login');
   }
 
 }
