@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Логин*" [(ngModel)]="name" (input)="errorMessage = '';">
+  </mat-form-field><br/>
+  <mat-form-field class="example-full-width" style="padding: 10px;">
+    <input matInput placeholder="Эмейл*" [(ngModel)]="email" (input)="errorMessage = '';">
+  </mat-form-field><br/>
+  <mat-form-field class="example-full-width" style="padding: 10px;">
+    <input matInput placeholder="Пароль*" type="password" [(ngModel)]="password" (input)="errorMessage = '';">
+  </mat-form-field><br/>
+  <mat-form-field class="example-full-width" style="padding: 10px;">
+    <input matInput placeholder="Подтверждение пароля*" type="password" [(ngModel)]="confirmPassword" (input)="errorMessage = false;">
+  </mat-form-field><br/>
+  <br/>
+  <button mat-button class="mat-elevation-z1" style="width: 180px" (click)="registration()">Зарегестрироваться</button>
+  <div style="width: 100%; height: 50px;">
+    <div class="danger-text" *ngIf="errorMessage">{{errorMessage}}</div>
+  </div>
+</div>

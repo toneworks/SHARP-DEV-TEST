@@ -1,0 +1,40 @@
+.wrapper {
+  margin: auto;
+  margin-top: 20px;
+  width: 80%;
+  min-width: 800px;
+}
+
+.row {
+  width: 100%;
+
+}
+
+.sending {
+  background: rgba(100, 0, 0, 0.05);
+}
+
+.reception {
+  background: rgba(0, 100, 0, 0.05);
+}
+
+.field {
+  font-size: 14px;
+  width: 120px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0px 20px;
+  box-sizing: border-box;
+}
+
+.active{
+  background: rgba(200, 200, 0, 0.05);
+}
+
+.reset{
+
+}

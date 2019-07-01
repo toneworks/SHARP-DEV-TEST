@@ -1,0 +1,42 @@
+<div class="background" (click)="router.navigateByUrl('')"></div>
+<div class="card mat-elevation-z8">
+  <div class="header">Новый перевод</div>
+  <!--  <mat-form-field class="field">-->
+  <!--    <input matInput placeholder="Получатель" [(ngModel)]="recipient" [autocomplete]="false">-->
+  <!--  </mat-form-field><br/>-->
+
+  <div *ngIf="!sending">
+    <mat-form-field class="field">
+      <input matInput placeholder="Получатель" aria-label="State"
+             [matAutocomplete]="auto" (input)="changedRecipient($event.target.value)" [value]="trans.recipient||''">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of usersList.filteredUsers" [value]="state.name">
+          <span>{{state.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="field">
+      <input matInput type="number" placeholder="Сумма PW" (input)="changedAmount($event.target)" [value]="trans.amount||''">
+    </mat-form-field>
+    <br/>
+
+    <div style="width: 100%; height: 30px"></div>
+    <button mat-button class="field mat-elevation-z1" (click)="send()"
+            [ngClass]="{disabled: sendDisabled}">Отправить
+    </button>
+    <br/>
+    <div style="width: 100%; height: 50px">
+      <span *ngIf="message" class="message">{{message}}</span>
+    </div>
+  </div>
+  <button mat-button class="field cancel mat-elevation-z1" style="font-size: 12px; width: 40%;" [routerLink]="''">Отмена
+  </button>
+
+  <div class="spinner" *ngIf="sending">
+    <mat-progress-spinner
+      [color]="'primary'"
+      [mode]="'indeterminate'">
+    </mat-progress-spinner>
+  </div>
+</div>

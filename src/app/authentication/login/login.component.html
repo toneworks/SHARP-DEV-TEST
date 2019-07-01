@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <mat-form-field class="example-full-width" style="padding: 10px;">
+    <input matInput type="email" placeholder="эмейл" [(ngModel)]="email" (input)="wrongPassword = false;">
+  </mat-form-field><br/>
+  <mat-form-field class="example-full-width" style="padding: 10px;">
+    <input matInput type="password" placeholder="пароль" [(ngModel)]="password" (input)="wrongPassword = false;">
+  </mat-form-field><br/><br/>
+  <button mat-button class="mat-elevation-z1" style="width: 180px" (click)="login()">Войти</button>
+  <div style="width: 100%; height: 50px;">
+    <div class="danger-text" *ngIf="wrongPassword">Неверный логин или пароль</div>
+  </div>
+  <button mat-button class="mat-elevation-z1" style="width: 180px" [routerLink]="'./toReg'" >Регистрация</button>
+</div>

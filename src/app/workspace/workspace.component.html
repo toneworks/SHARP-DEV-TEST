@@ -1,0 +1,10 @@
+<div class="user-info mat-elevation-z8">
+  <div style="flex: 8; display: flex; flex-direction: column; height: 100%">
+    <div class="name" style="flex: 1; line-height: 22px">{{userInfo.name}}<br/><span class="email">({{userInfo.email}})</span></div>
+    <div class="name" style="flex: 1">баланс: {{userInfo.balance}}PW</div>
+  </div>
+  <button mat-button class="exit" style="flex: 1" (click)="auth.exit()">Выход</button>
+</div>
+<app-transactions-list></app-transactions-list>
+<button mat-button class="add-button mat-elevation-z8" [routerLink]="'/workspace/new'">+</button>
+<router-outlet *ngIf="router.url==='/workspace/new'"></router-outlet>

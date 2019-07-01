@@ -1,0 +1,111 @@
+<div class="wrapper mat-elevation-z8">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="setPaginatorSize(6)"
+                         (closed)="setPaginatorSize(10)">
+      <mat-expansion-panel-header [ngClass]="{active: trans.filtersIsActive}">
+        <mat-panel-title>
+          <div style="height: 100%; display: flex">
+            <span>Фильтры</span>
+            <div class="reset" style="position: relative; left: 30px;" *ngIf="trans.filtersIsActive"
+                 (click)="$event.stopPropagation(); trans.resetFilters()">✕</div>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="filters">
+        <div style="display: flex; flex-direction: column; margin: 10px">
+          <span>От:</span>
+          <mat-form-field class="field">
+            <input matInput type="date" #sinceDate
+                   (input)="trans.setDateFilter($event.target.value, sinceTime.value, toDate.value, toTime.value)"
+                   [value]="trans.sinceDateFilter">
+          </mat-form-field>
+          <mat-form-field class="field">
+            <input matInput type="time" #sinceTime
+                   (input)="trans.setDateFilter(sinceDate.value, $event.target.value, toDate.value, toTime.value)"
+                   [value]="trans.sinceTimeFilter">
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex; flex-direction: column; margin: 10px">
+          <span>До:</span>
+          <mat-form-field class="field">
+            <input matInput type="date" #toDate
+                   (input)="trans.setDateFilter(sinceDate.value, sinceTime.value, toDate.value, toTime.value)"
+                   [value]="trans.toDateFilter">
+          </mat-form-field>
+          <mat-form-field class="field">
+            <input matInput type="time" #toTime
+                   (input)="trans.setDateFilter(sinceDate.value, sinceTime.value, toDate.value, toTime.value)"
+                   [value]="trans.toTimeFilter">
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex; flex-direction: column; margin: 10px;">
+          <br/>
+          <mat-form-field class="field">
+            <input matInput (input)="trans.setContractorFilter($event.target.value)" placeholder="Контрагент"
+                   [value]="trans.contractorFilter">
+          </mat-form-field>
+        </div>
+
+        <div style="display: flex; flex-direction: column; margin: 10px;">
+          Сумма:
+          <mat-form-field class="field">
+            <input matInput type="number" (keyup)="trans.setSinceAmountFilter($event.target.value)" placeholder="От"
+            [value]="trans.sinceAmountFilter">
+          </mat-form-field>
+          <mat-form-field class="field">
+            <input matInput type="number" (input)="trans.setToAmountFilter($event.target.value)" placeholder="До"
+            [value]="trans.toAmountFilter">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <table mat-table matSort [dataSource]="dataSource" style="width: 100%;">
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Дата</th>
+      <td mat-cell *matCellDef="let element">{{element.date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Контрагент</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.username}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Сумма</th>
+      <td mat-cell *matCellDef="let element">{{element.amount}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+      <th mat-header-cell *matHeaderCellDef>Баланс после<br/>транзакции</th>
+      <td mat-cell *matCellDef="let element">
+        <div style="width: 100%; height: 100%; display: flex; align-items: center">
+          <div style="flex: 14">
+            {{element.balance}}
+          </div>
+          <button mat-button style="float: right" *ngIf="element.amount<0" title="повторить"
+                  [routerLink]="'/workspace/new'"
+                  (click)="trans.recipient=element.username;trans.amount=-element.amount">
+            <img src="assets/repeat.png" style="height: 20px"/>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"
+        [ngClass]="{sending: row.amount<0, reception: row.amount>0}"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="pageSize"
+                 style="margin-right: 5%;">
+  </mat-paginator>
+</div>

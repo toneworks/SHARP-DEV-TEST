@@ -1,0 +1,57 @@
+.background{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, 0.6);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+$width: 350px;
+.card{
+  text-align: center;
+  position: fixed;
+  z-index: 3;
+  background: white;
+  display: block;
+  margin: auto;
+  top: 150px;
+  left: calc((100vw - #{$width})/2);
+  width: $width;
+  height: $width;
+}
+
+.field{
+  width: 60%;
+}
+
+.cancel{
+  position: absolute;
+  margin: auto;
+  bottom: 15px;
+  left: 106px;
+}
+
+.header{
+  border-bottom: solid 1px;
+  padding: 5px;
+}
+
+.disabled{
+  background: lightgray;
+  cursor: default;
+}
+
+.message{
+  color: red;
+}
+
+.spinner{
+  position: absolute;
+  top: 83px;
+  left: 120px;
+  margin: auto;
+  display: inline-block;
+}

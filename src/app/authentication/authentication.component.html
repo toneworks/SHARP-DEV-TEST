@@ -1,0 +1,10 @@
+<div class="authentification-container mat-elevation-z8">
+  <div class="header">
+    <button *ngIf="router.url==='/authentication/registration'"
+            mat-button style="position: absolute; top: 0; left: 0;" [routerLink]="'authentication/login'">
+      <img src="assets/arrow-left.png" style="height: 10px;">
+    </button>
+    {{router.url==='/authentication/login'?'Вход':'Регистрация'}}
+  </div>
+  <router-outlet></router-outlet>
+</div>

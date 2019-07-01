@@ -1,0 +1,17 @@
+.authentification-container{
+  width: 350px;
+  height: 460px;
+  margin: auto;
+  position: absolute;
+  top: 20%;
+  left: calc((100% - 300px)/2);
+}
+
+.header{
+  border-bottom: solid 1px;
+  font-size: 21px;
+  text-align: center;
+  padding: 5px;
+  height: 35px;
+  box-sizing: border-box;
+}
